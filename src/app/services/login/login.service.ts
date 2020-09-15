@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable()
 export class LoginService {
 
-  private url:string  = "http://localhost:8080/login";
+  private url:string  = "http://localhost:4200/login";
 
   constructor(private httpClient:HttpClient) { }
 

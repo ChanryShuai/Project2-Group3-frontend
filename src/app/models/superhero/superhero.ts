@@ -4,9 +4,14 @@ import { kStringMaxLength } from 'buffer';
 export class Superhero {
 
     id:number;
+    image: object;
     name:string;
-    powerStats: PowerStats;
+    fullName: string;
+    poBirth: string;
     alignment: string;
+    occupation: string;
+    affiliation: string;
+    powerStats: PowerStats;
 }
 
 export enum PowerStats{

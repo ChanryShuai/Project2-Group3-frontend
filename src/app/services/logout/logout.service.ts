@@ -3,12 +3,12 @@ import { AuthTokenService } from '../cache/authToken/auth-token.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CurUserService } from '../cache/curUser/cur-user.service';
-import { User } from '../../models/user';
+import { User } from 'src/app/models/user/user';
 
 @Injectable()
 export class LogoutService {
 
-    private url:string = "http://ec2-13-58-228-189.us-east-2.compute.amazonaws.com/logout";
+    private url:string = "http://localhost:4200/logout";
 
     constructor(
         private httpClient:HttpClient,

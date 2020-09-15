@@ -1,1 +1,30 @@
-<p>superhero works!</p>
+<div class="container">
+    <div class="row">
+        <input class="col" type="number" [(ngModel)]="input">
+        <button class="btn btn-primary" (click)="getAllHeros()">Heros</button>
+        <button class="btn btn-primary" (click)="getHero()">Find Your Hero</button>
+    </div>
+
+    <table class="table" *ngIf="superhero">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Place of Birth</th>
+                <th scope="col">Alignment</th>
+                <th scope="col">Occupation</th>
+                <th scope="col">Affiliation</th>
+                <th scope="col">PowerStats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{superhero.name}}</td>
+                <td>{{poke.types[0].type.name}}<span *ngIf="poke.types.length>1">{{poke.types[1].type.name | type}}</span></td>
+                <td><img src="{{poke.sprites.front_default}}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
