@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <input class="col" type="number" [(ngModel)]="input">
-        <button class="btn btn-primary" (click)="getAllHeros()">Heros</button>
+        <!-- <button class="btn btn-primary" (click)="getAllHeros()">Heros</button> -->
         <button class="btn btn-primary" (click)="getHero()">Find Your Hero</button>
     </div>
 
@@ -11,8 +11,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Image</th>
                 <th scope="col">Name</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">Place of Birth</th>
+                <th scope="col">Full-Name</th>
                 <th scope="col">Alignment</th>
                 <th scope="col">Occupation</th>
                 <th scope="col">Affiliation</th>
@@ -21,9 +20,21 @@
         </thead>
         <tbody>
             <tr>
+                <td>{{superhero.id}}</td>
+                <td><img src={{superhero.image.url}}></td>
                 <td>{{superhero.name}}</td>
-                <td>{{poke.types[0].type.name}}<span *ngIf="poke.types.length>1">{{poke.types[1].type.name | type}}</span></td>
-                <td><img src="{{poke.sprites.front_default}}"></td>
+                <td *ngIf="superhero.biography.full-name">
+                    {{superhero.biography.full-name}}
+                </td>
+                <td>
+                    {{superhero.biography.alignment}}
+                </td>
+                <td>
+                    {{superhero.work.occupation}}
+                </td>
+                <td>
+                    {{superhero.powerstats}}
+                </td>
             </tr>
         </tbody>
     </table>
