@@ -9,20 +9,31 @@ import { Superhero } from 'src/app/models/superhero/superhero';
 export class SuperheroService {
 
   constructor(private http:HttpClient) { }
+
   getOneHeroFromApi(id:number):Observable<Superhero>{
     return this.http.get("https://www.superheroapi.com/api.php/2746669182324854/" +id+"/") as Observable<Superhero>
   }
 
-  getFiveHeros():Observable<Superhero[]>{
-    let random5:Array<number>;
-    for(let i = 0; i<5; i++) {
-      random5.push(Math.floor(Math.random()* 731)+1)
+  //getting random opponent
+  getRandomHeroFromApi():Observable<Superhero>{
+    let opponentId = (Math.random() * 731)+1
+    return this.http.get("https://www.superheroapi.com/api.php/2746669182324854/" +opponentId+"/") as Observable<Superhero>
   }
-    let hero5:Array<Superhero[]>;
+
+  //building array of 5 superheroes to select from
+  getFiveHeros(){
+    let randomArray = Array.from({length: 5}, () => Math.floor(Math.random() * 731)+1);
+    var hero5 =[];
     for(let j=0; j<5; j++){
-      let Superhero = this.getOneHeroFromApi(random5[j])
+      let Superhero = this.getOneHeroFromApi(randomArray[j])
       hero5.push(Superhero)
     }
-    return hero5 as Observable<Superhero[]>
-}
+    return hero5;
+  }
+
+    //saving one hero to DB
+    saveHero(h:Superhero){
+      this.http.post<Superhero>('http://localhost:8080/project2/superhero', h);
+    }
+
 }

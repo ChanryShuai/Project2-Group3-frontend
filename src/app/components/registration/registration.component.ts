@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user/user';
-import { RegistrationService } from 'src/app/services/registration/registration.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -9,16 +9,17 @@ import { RegistrationService } from 'src/app/services/registration/registration.
 })
 export class RegistrationComponent implements OnInit {
 
-  newUser:string;
+  newUser:User;
   UserId:number;
 
-  constructor(private rs: RegistrationService) { }
+  constructor(private us: UserService) { }
 
   ngOnInit(): void {
   }
 
+  //getting new registered user from DB
 getUser(){
-  this.rs.addUser().subscribe(
+  this.us.getUserById().subscribe(
     (response: User) => {
       this.user = response;
     }
