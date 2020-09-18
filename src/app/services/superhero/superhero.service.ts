@@ -24,8 +24,8 @@ export class SuperheroService {
   getFiveHeros(){
     let randomArray = Array.from({length: 5}, () => Math.floor(Math.random() * 731)+1);
     var hero5 =[];
-    for(let j=0; j<5; j++){
-      let Superhero = this.getOneHeroFromApi(randomArray[j])
+    for(let j of randomArray){
+      let Superhero = this.getOneHeroFromApi(j)
       hero5.push(Superhero)
     }
     return hero5;
