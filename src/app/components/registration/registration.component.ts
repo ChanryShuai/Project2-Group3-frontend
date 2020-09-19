@@ -9,8 +9,13 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  newUser:User;
-  UserId:number;
+  username:string;
+  password:string;
+  fName:string;
+  lName:string;
+  userId:number;
+
+  users: User[];
 
   constructor(private us: UserService) { }
 
@@ -18,16 +23,21 @@ export class RegistrationComponent implements OnInit {
   }
 
   //getting new registered user from DB
-getUser(){
-  this.us.getUserById().subscribe(
-    (response: User) => {
-      this.user = response;
+getUsers(){
+  this.us.getAllUsers().subscribe(
+    (response: User[]) => {
+      this.users = response;
     }
   )
 }
 
   register(){
-    let u = new User()
+   let u = new User(0,this.username,this.password,this.fName,this.lName, 0,0,0,);
+    this.us.addUser(u).subscribe(
+      (response:User)=>{
+        u = response;
+      }
+    )
   }
 
 }

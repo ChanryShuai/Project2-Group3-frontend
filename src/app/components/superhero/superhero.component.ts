@@ -10,7 +10,7 @@ import { SuperheroService } from 'src/app/services/superhero/superhero.service';
 export class SuperheroComponent implements OnInit {
 
   public superhero:Superhero = null;
-  public input:number = 0
+  public heroName:string;
 
   constructor(private ss:SuperheroService) { }
 
@@ -18,7 +18,7 @@ export class SuperheroComponent implements OnInit {
   }
 
   getHero():void{
-    this.ss.getHeroFromApi(this.input).subscribe(
+    this.ss.getOneHeroFromApi(this.heroName).subscribe(
     (data)=>{
       this.superhero=data;
     },

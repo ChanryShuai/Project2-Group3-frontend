@@ -12,7 +12,7 @@ export class UserService {
 
   addUser(u:User):Observable<User>{
     let body: User = u;
-    return this.http.post<User>('http://localhost:8080/project2/user', body);
+    return this.http.post<User>('http://localhost:8080/project2/register', body);
   }
 
   getUserById(userId:number){
@@ -35,10 +35,10 @@ export class UserService {
   getAllUserRecords(){
     let allUsers = this.getAllUsers();
    
-    let userRecords:Array<Array<number | string | number>> =[[0, "null", 0]];
+    let userRecords:Array<Array<any>> ;
 
     for (let user of allUsers[Symbol.iterator]()){
-      var userRecord:Array<number | string | number> =[0, "null", 0];
+      var userRecord:Array<any> = [0, "null", 0];
       userRecord[0] = user.userId;
       userRecord[1] = user.username;
       userRecord[2] = user.userRecord;

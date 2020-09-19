@@ -2,19 +2,19 @@
 <div class="row" id="formdiv">
     <div class="col-4-sm">
         <label class="label" for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="choose • username">
+        <input type="text" class="form-control" [(ngModel)]="username" placeholder="choose • username" required>
     </div>
     <div class="col-4-sm">
         <label class="label" for="password">Password</label>
-        <input type="text" class="form-control" id="password" placeholder="choose • password">
+        <input type="text" class="form-control" [(ngModel)]="password" placeholder="choose • password" required>
     </div>
     <div class="col-4-sm">
         <label class="label" for="fName">Firstname</label>
-        <input type="text" class="form-control" id="fName">
+        <input type="text" class="form-control" [(ngModel)]="fName" required>
     </div>
     <div class="col-4-sm">
         <label class="label" for="lName">Lastname</label>
-        <input type="text" class="form-control" id="lName">
+        <input type="text" class="form-control" [(ngModel)]="lName" required>
     </div>
     <button class="btn btn-success" id="registerbtn" (click)="register()"> Register </button>
 </div>
