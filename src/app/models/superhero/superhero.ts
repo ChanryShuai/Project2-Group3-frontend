@@ -1,5 +1,4 @@
-import { NumberValueAccessor } from '@angular/forms';
-import { kStringMaxLength } from 'buffer';
+import { Powerstats } from '../powerstats/powerstats';
 
 export class Superhero {
 
@@ -11,15 +10,22 @@ export class Superhero {
     alignment: string;
     occupation: string;
     affiliation: string;
-    powerStats: PowerStats;
+    powerStats: Powerstats;
+
+    
+    constructor(id:number,image:object, name:string, fullName:string, poBirth:string, alignment:string, occupation:string, affiliation:string, powerStats:Powerstats){
+        this.id = id; 
+        this.name = name;
+        this.fullName = fullName;
+        this.poBirth = poBirth;
+        this.alignment = alignment;
+        this.occupation = occupation;
+        this.affiliation = affiliation;
+        this.powerStats = powerStats;
+    }
 }
 
-export enum PowerStats{
-    intelligence,
-    strength,
-    speed,
-    durability,
-    pwoer,
-    combat,
-    average
-}
+
+
+
+

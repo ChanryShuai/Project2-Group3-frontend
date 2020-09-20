@@ -9,24 +9,37 @@ import { SuperheroService } from 'src/app/services/superhero/superhero.service';
 })
 export class SuperheroComponent implements OnInit {
 
-  public superhero:Superhero = null;
-  public heroName:string;
+  //for storing the hero retreived from Api
+  hero:Superhero;
+  villain:Superhero;
+
+  //for retrieving the avatar and opponent from DB after backend services
+  avatar:Superhero
+  opponent:Superhero;
+
+  heroIdApi:number;
+  heroIdDB:number;
 
   constructor(private ss:SuperheroService) { }
 
   ngOnInit(): void {
   }
 
-  getHero():void{
-    this.ss.getOneHeroFromApi(this.heroName).subscribe(
+  getRandomHerofromApi():void{
+    this.ss.getRandomHeroFromApi().subscribe(
     (data)=>{
-      this.superhero=data;
+      this.villain=data;
+      this.ss.saveHeroDB(this.villain);
     },
     //error retrieving data
     () =>{
-      this.superhero = null;
+      this.hero = null;
       console.log("something went wrong");
     }
     )
+  }
+
+  saveHero():void{
+    this.ss.saveHero(hero)
   }
 }

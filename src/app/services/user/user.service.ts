@@ -15,11 +15,11 @@ export class UserService {
     return this.http.post<User>('http://localhost:8080/project2/register', body);
   }
 
-  getUserById(userId:number){
+  getUserById(userId:number): Observable<User>{
     return this.http.get<User>('http://localhost:8080/project2/user'+userId);
   }
 
-  getUserByUsername(username:string){
+  getUserByUsername(username:string): Observable<User>{
     return this.http.get<User>('http://localhost:8080/project2/user'+username);
   }
   
@@ -32,20 +32,7 @@ export class UserService {
     return this.http.get<User[]>('http://localhost:8080/project2/user');
   }
 
-  getAllUserRecords(){
-    let allUsers = this.getAllUsers();
-   
-    let userRecords:Array<Array<any>> ;
-
-    for (let user of allUsers[Symbol.iterator]()){
-      var userRecord:Array<any> = [0, "null", 0];
-      userRecord[0] = user.userId;
-      userRecord[1] = user.username;
-      userRecord[2] = user.userRecord;
-     
-    } userRecords.push(userRecord);
-    
-  }
+  
     
 
   }
