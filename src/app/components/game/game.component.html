@@ -1,0 +1,39 @@
+<h2> Let's Play</h2>
+<div class="row" id="formdiv">
+    <div class="col-4-sm">
+        <button class="btn btn-success" id="registerbtn" (click)="gameInit()"> Start </button>
+        <table class="table" *ngIf="superheroes">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Full-Name</th>
+                    <th scope="col">Alignment</th>
+                    <th scope="col">Occupation</th>
+                    <th scope="col">Affiliation</th>
+                    <th scope="col">PowerStats</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let superhero of superheroes">
+                <tr [(ngModel)]="avatar" (click)="selectHero()">
+                    <td>{{superhero.id}}</td>
+                    <td><img src={{superhero.image.url}}></td>
+                    <td>{{superhero.name}}</td>
+                    <td *ngIf="superhero.biography.full-name">
+                        {{superhero.biography.full-name}}
+                    </td>
+                    <td>
+                        {{superhero.biography.alignment}}
+                    </td>
+                    <td *ngIf="superhero.biography.full-name">
+                        {{superhero.work.occupation}}
+                    </td>
+                    <td>
+                        {{superhero.powerstats}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

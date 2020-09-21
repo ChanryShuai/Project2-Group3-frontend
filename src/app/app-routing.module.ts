@@ -1,31 +1,49 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-//import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { SuperheroComponent } from './components/superhero/superhero.component';
-import { HomeComponent } from './home/home.component';
-//import { LogoutService } from './services/logout/logout.service';
+import { HomeComponent } from './components/home/home.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { BattleComponent } from './components/battle/battle.component';
+import { GameComponent } from './components/game/game.component';
 
 const routes: Routes = [
   {
-    path:'home',
-    component:HomeComponent
-  },
-  // {
-  //   path:'login',
-  //   component:LoginComponent
-  // },
-  // {
-  //   path:'logout',
-  //   component:LoginComponent
-  // },
-  {
-    path:'registration',
-    component:RegistrationComponent
+    path: 'home',
+    component: HomeComponent
   },
   {
-    path:'superhero',
-    component:SuperheroComponent
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'superhero',
+    component: SuperheroComponent
+  },
+  // {
+  //   path:'navbar',
+  //   component:NavbarComponent
+  // },
+  {
+    path: 'battle',
+    component: BattleComponent
+  },
+  {
+    path: 'game',
+    component: GameComponent
   }
 ];
 

@@ -15,15 +15,11 @@
                     </div>
                     <div class="text-center">
                         <button id="login" (click)="validate()" type="submit" class="btn btn-primary glyphicon glyphicon-log-in"> Login </button>
-                        <button id="register" type="button" class="btn btn-primary glyphicon glyphicon-user"> <a routerLink="/registration" routerLinkActive="active"></a>Register as a new user</button>
+                        <button id="register" (click)="register()" type="button" class="btn btn-primary glyphicon glyphicon-user"> Register as a new user</button>
                         <!-- <button id="forgot-pw" (click)="forgotPW()" type="button" class="btn btn-primary glyphicon glyphicon-plane"> Forgot Password</button> -->
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <alert></alert>
-    </div>
-
 </div>

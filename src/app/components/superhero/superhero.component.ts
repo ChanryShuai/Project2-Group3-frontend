@@ -9,6 +9,11 @@ import { SuperheroService } from 'src/app/services/superhero/superhero.service';
 })
 export class SuperheroComponent implements OnInit {
 
+  heroId:number;
+  superhero:Superhero;
+
+  superheroes:Superhero[]
+
   //for storing the hero retreived from Api
   hero:Superhero;
   villain:Superhero;
@@ -16,9 +21,6 @@ export class SuperheroComponent implements OnInit {
   //for retrieving the avatar and opponent from DB after backend services
   avatar:Superhero
   opponent:Superhero;
-
-  heroIdApi:number;
-  heroIdDB:number;
 
   constructor(private ss:SuperheroService) { }
 
@@ -33,13 +35,30 @@ export class SuperheroComponent implements OnInit {
     },
     //error retrieving data
     () =>{
-      this.hero = null;
-      console.log("something went wrong");
+      this.opponent = null;
+      console.log("error retrieving superhero from API");
     }
     )
   }
 
-  saveHero():void{
-    this.ss.saveHero(hero)
+getHeroFromApi(heroId:number):void{
+  this.ss.getOneHeroFromApi(heroId).subscribe(
+    (data)=>{
+      this.superheroes=[data];
+      //console.log(this.superheroes);
+    },()=>{
+      this.superheroes = null;
+      console.log("error retrieving superhero from API")
+    }
+  )
   }
+
+  getHeroList():Array<Superhero>{
+    return this.superheroes = this.ss.getFiveHeros()
+      }
+    
+
+  // saveHero():void{
+  //   this.ss.saveHero(hero)
+  // }
 }

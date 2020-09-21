@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from 'src/app/models/user/user';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginService {
 
   loggedInUser: User;
@@ -11,7 +14,7 @@ export class LoginService {
   notLoggedIn = true; 
   link: string;
 
-  private url:string  = "http://localhost:8080/login";
+  private url:string  = "http://localhost:8080/project2/login";
 
   constructor(private httpClient:HttpClient,
     private router: Router) { }
@@ -21,7 +24,12 @@ export class LoginService {
     }
   
   validate(username:string, password:string){
-    return this.httpClient.post(this.url+"/validate", {username, password},{responseType:"text",observe:"response"});
+    let body: any =
+    {
+      username: username,
+      password: password
+    };
+    return this.httpClient.post<User>(this.url+"/validate",body);
   }
 
   logout() {

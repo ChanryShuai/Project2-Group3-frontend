@@ -31,8 +31,4 @@ export class UserService {
   getAllUsers():Observable<User[]>{
     return this.http.get<User[]>('http://localhost:8080/project2/user');
   }
-
-  //get a list of users that is displaying their names,ids, and user records
-    getUserRecords():Observable<List<User>>
-
-  }
+}

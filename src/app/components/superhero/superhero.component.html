@@ -1,11 +1,14 @@
 <div class="container">
     <div class="row">
-        <input class="col" type="number" [(ngModel)]="heroName">
-        <!-- <button class="btn btn-primary" (click)="getAllHeros()">Heros</button> -->
-        <button class="btn btn-primary" (click)="getHero()">Find a Hero</button>
+        <p>We have 731 superheros -- enter a number to check it out:</p>
+        <input class="col" type="number" [(ngModel)]="heroId">
+        <button class="btn btn-primary" (click)="getHeroFromApi(heroId)">Find a Superhero</button>
     </div>
-
-    <table class="table" *ngIf="superhero">
+    <div class="row">
+        <p>More Superheros?</p>
+        <button class="btn btn-primary" (click)="getHeroList()">Superhero Database</button>
+    </div>
+    <table class="table" *ngIf="superheroes">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -18,7 +21,7 @@
                 <th scope="col">PowerStats</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let superhero of superheroes">
             <tr>
                 <td>{{superhero.id}}</td>
                 <td><img src={{superhero.image.url}}></td>
@@ -29,7 +32,7 @@
                 <td>
                     {{superhero.biography.alignment}}
                 </td>
-                <td>
+                <td *ngIf="superhero.biography.full-name">
                     {{superhero.work.occupation}}
                 </td>
                 <td>
@@ -38,4 +41,5 @@
             </tr>
         </tbody>
     </table>
+
 </div>
