@@ -28,11 +28,11 @@ export class SuperheroComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRandomHerofromApi():void{
-    this.villain = this.ss.getRandomHeroFromApi()
-      this.ss.saveHeroDB(this.villain);
+  // getRandomHerofromApi():void{
+  //   this.villain = this.ss.getRandomHeroFromApi()
+  //     this.ss.saveHeroDB(this.villain);
     
-  }
+  // }
 
 getHeroFromApi(heroId:number):void{
   this.ss.getOneHeroFromApi(heroId).subscribe(
@@ -54,17 +54,22 @@ getHeroFromApi(heroId:number):void{
   // saveHero():void{
   //   this.ss.saveHero(hero)
   // }
+
+getRandomHerofromApi():void{
+  this.ss.getRandomHeroFromApi().subscribe(
+  (data)=>{
+    this.villain=data;
+    if(this.villain.powerStats.intelligence == null||this.villain.powerStats.strength == null||
+      this.villain.powerStats.speed == null||this.villain.powerStats.durability == null||
+      this.villain.powerStats.power == null||this.villain.powerStats.combat == null){
+        this.ss.getRandomHeroFromApi();
+      } return this.villain;
+    //this.ss.saveHeroDB(this.villain);
+  },
+  //error retrieving data
+  () =>{
+    this.opponent = null;
+    console.log("error retrieving superhero from API");
+  });
 }
-// getRandomHerofromApi():void{
-//   this.ss.getRandomHeroFromApi().subscribe(
-//   (data)=>{
-//     this.villain=data;
-//     this.ss.saveHeroDB(this.villain);
-//   },
-//   //error retrieving data
-//   () =>{
-//     this.opponent = null;
-//     console.log("error retrieving superhero from API");
-//   }
-//   )
-// }
+}
