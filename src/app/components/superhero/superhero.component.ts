@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Superhero } from 'src/app/models/superhero/superhero';
 import { SuperheroService } from 'src/app/services/superhero/superhero.service';
 
+
 @Component({
   selector: 'app-superhero',
   templateUrl: './superhero.component.html',
