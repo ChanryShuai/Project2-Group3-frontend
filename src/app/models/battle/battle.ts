@@ -4,7 +4,9 @@ export class Battle {
     
     battleId: number;
     outcomes: string;
-    avatarId: Superhero;
-    opponentId: Superhero;
+    avatar: string;
+    opponent: string;
+    // avatarId: Superhero;
+    // opponentId: Superhero;
 
 }

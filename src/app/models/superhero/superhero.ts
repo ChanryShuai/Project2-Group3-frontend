@@ -2,22 +2,25 @@ import { Powerstats } from '../powerstats/powerstats';
 
 export class Superhero {
 
-    id:number;
+    id: number;
     image: object;
-    name:string;
-    fullName: string;
-    poBirth: string;
+    name: string;
     alignment: string;
     occupation: string;
     affiliation: string;
-    powerStats: Powerstats;
-
     
-    constructor(id:number,image:object, name:string, fullName:string, poBirth:string, alignment:string, occupation:string, affiliation:string, powerStats:Powerstats){
-        this.id = id; 
+    // intelligence: number;
+    // strength: number;
+    // speed: number;
+    // durability: number;
+    // power: number;
+    // combat: number;
+    // average: number;
+    powerStats:Powerstats;
+
+    constructor(id: number, image: object, name: string, alignment: string, occupation: string, affiliation: string, powerStats:Powerstats) {
+        this.id = id;
         this.name = name;
-        this.fullName = fullName;
-        this.poBirth = poBirth;
         this.alignment = alignment;
         this.occupation = occupation;
         this.affiliation = affiliation;
@@ -27,5 +30,10 @@ export class Superhero {
 
 
 
-
+// intelligence: number,
+// strength: number,
+// speed: number,
+// durability: number,
+// power: number,
+// combat: number
 

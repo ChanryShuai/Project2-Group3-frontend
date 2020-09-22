@@ -1,19 +1,19 @@
-<h3>Registration</h3>
+<h3>- Registrater as a new user -</h3>
 <div class="row" id="formdiv">
     <div class="col-4-sm">
-        <label class="label" for="username">Username</label>
-        <input type="text" class="form-control" [(ngModel)]="username" placeholder="choose • username" required>
+        <label class="label" for="username">Username:</label>
+        <input type="text" class="form-control" [(ngModel)]="username" required>
     </div>
     <div class="col-4-sm">
-        <label class="label" for="password">Password</label>
-        <input type="text" class="form-control" [(ngModel)]="password" placeholder="choose • password" required>
+        <label class="label" for="password">Password:</label>
+        <input type="text" class="form-control" [(ngModel)]="password" required>
     </div>
     <div class="col-4-sm">
-        <label class="label" for="fName">Firstname</label>
+        <label class="label" for="fName">First Name:</label>
         <input type="text" class="form-control" [(ngModel)]="fName" required>
     </div>
     <div class="col-4-sm">
-        <label class="label" for="lName">Lastname</label>
+        <label class="label" for="lName">Last Nsame:</label>
         <input type="text" class="form-control" [(ngModel)]="lName" required>
     </div>
     <button class="btn btn-success" id="registerbtn" (click)="register()"> Register </button>

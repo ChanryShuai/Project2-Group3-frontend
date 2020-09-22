@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Battle } from 'src/app/models/battle/battle';
+import { BattleDTO } from 'src/app/models/battleDTO/battle-dto';
 import { User } from 'src/app/models/user/user';
 import { UserService } from '../user/user.service';
 
@@ -23,8 +24,8 @@ export class BattleService {
   }
 
   //addBattle return void 
-  addBattle(battle : Battle): void{
-    this.http.post<Battle>(('http://localhost:8080/project2/battle'), battle);
+  addBattle(battleDTO : BattleDTO): void{
+    this.http.post<Battle>(('http://localhost:8080/project2/battle'), battleDTO);
   }
 
  //get All user records		

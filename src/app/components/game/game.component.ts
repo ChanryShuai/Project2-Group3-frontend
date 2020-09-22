@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Battle } from 'src/app/models/battle/battle';
+import { BattleDTO } from 'src/app/models/battleDTO/battle-dto';
 import { Superhero } from 'src/app/models/superhero/superhero';
+import { BattleService } from 'src/app/services/battle/battle.service';
 import { SuperheroService } from 'src/app/services/superhero/superhero.service';
 
 @Component({
@@ -12,8 +15,10 @@ export class GameComponent implements OnInit {
   superheroes: Superhero[];
   //avatarId:number = parseInt(document.getElementById("avatarId").nodeValue);
   avatar: Superhero;
+  villain: Superhero;
+  outcome: string; 
 
-  constructor(private ss: SuperheroService) { }
+  constructor(private ss: SuperheroService, private bs:BattleService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +28,7 @@ export class GameComponent implements OnInit {
   }
 
   selectHero(): Superhero[] {
-    this.superheroes= [this.avatar];
+    this.superheroes = [this.avatar];
     //this.superheroes = [this.avatar];
     // console.log([this.avatar]) 
     console.log(this.avatar);
@@ -34,6 +39,20 @@ export class GameComponent implements OnInit {
     return this.superheroes;
 
   }
+
+  fight(): string {
+    if (this.avatar.powerStats.average >= this.villain.powerStats.average) {
+      this.outcome = "win";
+    } else {
+      this.outcome = "loss";
+    } return this.outcome;
+  }
+
+  buildBattle():void{
+    let battleDTO = new BattleDTO(this.outcome, this.avatar.name, this.villain.name);
+    this.bs.addBattle(battleDTO);
+  }
+
   // this.ss.getOneHeroFromApi(this.avatarId).subscribe(
 
   //   (data) => {

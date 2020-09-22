@@ -29,17 +29,9 @@ export class SuperheroComponent implements OnInit {
   }
 
   getRandomHerofromApi():void{
-    this.ss.getRandomHeroFromApi().subscribe(
-    (data)=>{
-      this.villain=data;
+    this.villain = this.ss.getRandomHeroFromApi()
       this.ss.saveHeroDB(this.villain);
-    },
-    //error retrieving data
-    () =>{
-      this.opponent = null;
-      console.log("error retrieving superhero from API");
-    }
-    )
+    
   }
 
 getHeroFromApi(heroId:number):void{
@@ -63,3 +55,16 @@ getHeroFromApi(heroId:number):void{
   //   this.ss.saveHero(hero)
   // }
 }
+// getRandomHerofromApi():void{
+//   this.ss.getRandomHeroFromApi().subscribe(
+//   (data)=>{
+//     this.villain=data;
+//     this.ss.saveHeroDB(this.villain);
+//   },
+//   //error retrieving data
+//   () =>{
+//     this.opponent = null;
+//     console.log("error retrieving superhero from API");
+//   }
+//   )
+// }
