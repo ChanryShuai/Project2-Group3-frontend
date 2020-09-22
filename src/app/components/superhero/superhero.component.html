@@ -1,14 +1,23 @@
-<div class="main-container">
-    <div class="row">
-        <label>We have 731 superheros -- enter a number to check it out:</label>
+<div main="container">
+    <div class="row-4">
+        <div class="col-6">
+            <br>
+            <br>
+        <label style="font-family: Impact; font-size:x-large; color: rgb(228, 124, 28)">We have 731 superheros -- enter a number to check it out:</label>
         <input class="col" type="number" [(ngModel)]="heroId">
-        <button class="btn btn-primary" (click)="getHeroFromApi(heroId)">Find a Superhero</button>
+        <br>
+        <br>
+        <button  class="btn btn-primary" (click)="getHeroFromApi(heroId)">Find a Superhero</button>
     </div>
-    <div class="row">
-        <p>More Superheros?</p>
+</div>
+    <div class="row-4">
+        <div class="col-4">
+            <br>
+            <br>
+        <p style="font-family: Impact; font-size: x-large; color: rgb(228, 124, 28)" >More Superheros?</p>
         <button class="btn btn-primary" (click)="getHeroList()">Superhero Database</button>
     </div>
-
+</div>
     <div style="padding: 13px;">
         <mat-spinner *ngIf="superheroes.length === 0"></mat-spinner>
 
