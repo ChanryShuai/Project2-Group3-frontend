@@ -29,7 +29,7 @@ export class LoginService {
       username: username,
       password: password
     };
-    return this.httpClient.post<User>(this.url+"/validate",body);
+    return this.httpClient.post<User>((this.url+"/validate"),body);
   }
 
   logout() {

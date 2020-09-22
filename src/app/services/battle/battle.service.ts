@@ -24,7 +24,7 @@ export class BattleService {
 
   //addBattle return void 
   addBattle(battle : Battle): void{
-    this.http.post<Battle>('http://localhost:8080/project2/battle', battle);
+    this.http.post<Battle>(('http://localhost:8080/project2/battle'), battle);
   }
 
  //get All user records		

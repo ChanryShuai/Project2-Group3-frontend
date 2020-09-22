@@ -16,9 +16,9 @@
                 </tr>
             </thead>
             <tbody *ngFor="let superhero of superheroes">
-                <tr [(ngModel)]="avatar" (click)="selectHero()">
+                <tr id="avatar" (click)="selectHero()">
                     <td>{{superhero.id}}</td>
-                    <td><img src={{superhero.image.url}}></td>
+                    <td id="image"><img src={{superhero.image.url}}></td>
                     <td>{{superhero.name}}</td>
                     <td *ngIf="superhero.biography.full-name">
                         {{superhero.biography.full-name}}
@@ -32,6 +32,9 @@
                     <td>
                         {{superhero.powerstats}}
                     </td>
+                    <!-- <td>
+                        <button (click)="selectHero()">select</button>
+                    </td> -->
                 </tr>
             </tbody>
         </table>

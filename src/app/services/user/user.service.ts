@@ -12,7 +12,7 @@ export class UserService {
 
   addUser(u:User):Observable<User>{
     let body: User = u;
-    return this.http.post<User>('http://localhost:8080/project2/register', body);
+    return this.http.post<User>(('http://localhost:8080/project2/user/register'), body);
   }
 
   getUserById(userId:number): Observable<User>{
@@ -25,7 +25,7 @@ export class UserService {
   
   updateUser(u:User):Observable<User>{
     let body: User = u;
-    return this.http.post<User>('http://localhost:8080/project2/user', body);
+    return this.http.put<User>(('http://localhost:8080/project2/user/update'), body);
   }
 
   getAllUsers():Observable<User[]>{

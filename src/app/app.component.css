@@ -1,0 +1,9 @@
+h1 {
+    margin-top: 5vh;
+    text-align: center;
+    font-family: Impact;
+    font-size: 50pt;
+    word-spacing: 20px;
+    letter-spacing: 5px;
+    text-shadow: 5px 3px rgb(228, 124, 28);
+}

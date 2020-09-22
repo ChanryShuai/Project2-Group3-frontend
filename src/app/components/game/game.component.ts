@@ -22,20 +22,26 @@ export class GameComponent implements OnInit {
     return this.superheroes = this.ss.getFiveHeros();
   }
 
-  selectHero():Superhero[] {
-   // this.avatarId
-   //this.avatar = avatar;
+  selectHero(): Superhero[] {
+    this.superheroes= [this.avatar];
+    //this.superheroes = [this.avatar];
+    // console.log([this.avatar]) 
     console.log(this.avatar);
-    return this.superheroes = [avatar]
-    // this.ss.getOneHeroFromApi(this.avatarId).subscribe(
-     
-    //   (data) => {
-        
-    //     this.superheroes = [data];
-    //   }, () => {
-    //     this.superheroes = null;
-    //     console.log("error retrieving superhero from API")
-    //   }
-    //   );return this.superheroes;
+    this.ss.getOneHeroFromApi(this.avatar.id).subscribe(
+      (data) => {
+        this.superheroes = [data]
+      })
+    return this.superheroes;
+
   }
+  // this.ss.getOneHeroFromApi(this.avatarId).subscribe(
+
+  //   (data) => {
+
+  //     this.superheroes = [data];
+  //   }, () => {
+  //     this.superheroes = null;
+  //     console.log("error retrieving superhero from API")
+  //   }
+  //   );return this.superheroes;
 }
