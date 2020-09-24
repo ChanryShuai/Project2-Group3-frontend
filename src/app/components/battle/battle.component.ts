@@ -15,7 +15,7 @@ export class BattleComponent implements OnInit {
 
   username:string
   //userBattles:Array<Battle>
-  userRecords:Array<User>
+  userRecords:Array<any>
 
   ngOnInit(): void {
   }
