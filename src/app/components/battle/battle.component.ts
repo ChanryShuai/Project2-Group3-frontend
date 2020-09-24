@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Battle } from 'src/app/models/battle/battle';
+import { User } from 'src/app/models/user/user';
+import { BattleService } from 'src/app/services/battle/battle.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-battle',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BattleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private us:UserService, private bs:BattleService) { }
+
+  username:string
+  //userBattles:Array<Battle>
+  userRecords:Array<User>
 
   ngOnInit(): void {
   }
 
+  // getOneUserBattle(username:string){
+  //   this.bs.getUserBattles(username).subscribe(
+  //     (data)=>{
+  //       this.userBattles=data;
+  //       return this.userBattles
+  //     }
+  //   )
+  // }
+
+  getOneUserRecord(username:string){
+    this.us.getUserByUsername(this.username).subscribe(
+      (data)=>{
+        this.userRecords=[data];
+      }
+      )
+    }
+
+  getUserRecords(){
+    this.userRecords=this.bs.getAllUserRecords() 
+    return this.userRecords;
+  }
 }

@@ -1,1 +1,36 @@
-<p>battle works!</p>
+<div main="container">
+    <div class="row-4">
+        <div class="col-6">
+            <br>
+            <br>
+            <label style="font-family: Impact; font-size:x-large; color: rgb(228, 124, 28)">Check out scores:</label>
+            <button class="btn btn-primary" (click)="getOneUserRecord(username)">See my user record</button>
+            <button class="btn btn-primary" (click)="getUserRecords()">See all user records</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="formdiv">
+    <div class="col-4-sm">
+        <table class="table" *ngIf="userRecords">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">User Record</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let user of userRecords">
+                <td>{{user.userId}}</td>
+                <td>{{user.first}}</td>
+                <td>
+                    {{user.last}}
+                </td>
+                <td>
+                    {{user.userRecord}}
+                </td>
+            </tbody>
+        </table>
+    </div>
+</div>

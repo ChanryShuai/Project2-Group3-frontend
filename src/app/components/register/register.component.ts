@@ -11,8 +11,8 @@ export class RegisterComponent implements OnInit {
 
   username:string;
   password:string;
-  fName:string;
-  lName:string;
+  first:string;
+  last:string;
   userId:number;
 
   users: User[];
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
   }
   
     register(){
-     let u = new User(0,this.username,this.password,this.fName,this.lName, 0,0,0,);
+     let u = new User(0,this.username,this.password,this.first,this.last, 0,0,0,);
       this.us.addUser(u).subscribe(
         (response:User)=>{
           u = response;

@@ -17,6 +17,7 @@ export class GameComponent implements OnInit {
   avatar: Superhero;
   villain: Superhero;
   outcome: string; 
+  userId:number;
 
   constructor(private ss: SuperheroService, private bs:BattleService) { }
 
@@ -49,7 +50,7 @@ export class GameComponent implements OnInit {
   }
 
   buildBattle():void{
-    let battleDTO = new BattleDTO(this.outcome, this.avatar.name, this.villain.name);
+    let battleDTO = new BattleDTO(this.outcome, this.avatar.name, this.villain.name, this.userId);
     this.bs.addBattle(battleDTO);
   }
 
