@@ -16,15 +16,15 @@ export class Superhero {
     // power: number;
     // combat: number;
     // average: number;
-    powerStats: Powerstats;
+    powerstats: Powerstats;
 
-    constructor(id: number, image: object, name: string, alignment: string, occupation: string, affiliation: string, powerStats:Powerstats) {
+    constructor(id: number, image: object, name: string, alignment: string, occupation: string, affiliation: string, powerstats:Powerstats) {
         this.id = id;
         this.name = name;
         this.alignment = alignment;
         this.occupation = occupation;
         this.affiliation = affiliation;
-        this.powerStats = powerStats;
+        this.powerstats = powerstats;
     }
 }
 

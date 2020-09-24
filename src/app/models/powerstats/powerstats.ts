@@ -6,7 +6,6 @@ export class Powerstats {
         durability:number;
         power:number;
         combat:number;
-        average:number
 
         constructor(intelligence: number,
                 strength: number,
@@ -21,7 +20,5 @@ export class Powerstats {
                 this.durability = durability;
                 this.power=power;
                 this.combat=combat;
-                this.average = (intelligence+strength+speed+durability+power+combat)/6;
-               // this.powerStats = powerStats;
             }
 }

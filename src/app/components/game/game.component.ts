@@ -51,19 +51,32 @@ export class GameComponent implements OnInit {
    
   }
 
+  average(hero:Superhero):number{
+  let p:Powerstats = hero.powerstats;
+  console.log(p);
+  let average:number = (p.intelligence+p.strength+p.speed+p.durability+p.power+p.combat)/6;
+  console.log(average);
+  return average;
+  }
+
   fight(superhero:Superhero[], villain:Superhero): string {
     //this.avarPower = this.avatar.powerStats;
    
     let sup = superhero[0];
-    console.log(sup.powerstats);
-    console.log(villain.powerStats.intelligence);
-    if (sup.powerStats.average >= villain.powerStats.average) {
-      
+    let supA = this.average(sup);
+    let villainA = this.average(villain);
+    // console.log(sup);
+    // console.log(supA);
+    // console.log(villainA);
+    //console.log(villain.powerStats.intelligence);
+    if (supA >= villainA) {
       this.outcome = "win";
-      this.router.navigate(['/battle']);
+      // alert("YOU HAVE WON!")
+      // this.router.navigate(['/battle']);
     } else {
       this.outcome = "loss";
-      this.router.navigate(['/battle']);
+      // alert("You lost!")
+      // this.router.navigate(['/battle']);
     }console.log(this.outcome); 
     return this.outcome;
   }

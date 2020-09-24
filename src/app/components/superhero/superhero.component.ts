@@ -1,3 +1,4 @@
+import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Superhero } from 'src/app/models/superhero/superhero';
 import { SuperheroService } from 'src/app/services/superhero/superhero.service';
@@ -10,20 +11,20 @@ import { SuperheroService } from 'src/app/services/superhero/superhero.service';
 })
 export class SuperheroComponent implements OnInit {
 
-  heroId:number;
-  superhero:Superhero;
+  heroId: number;
+  superhero: Superhero;
 
-  superheroes:Superhero[]
+  superheroes: Superhero[]
 
   //for storing the hero retreived from Api
-  hero:Superhero;
-  villain:Superhero;
+  hero: Superhero;
+  villain: Superhero;
 
   //for retrieving the avatar and opponent from DB after backend services
-  avatar:Superhero
-  opponent:Superhero;
+  avatar: Superhero
+  opponent: Superhero;
 
-  constructor(private ss:SuperheroService) { }
+  constructor(private ss: SuperheroService) { }
 
   ngOnInit(): void {
   }
@@ -31,45 +32,47 @@ export class SuperheroComponent implements OnInit {
   // getRandomHerofromApi():void{
   //   this.villain = this.ss.getRandomHeroFromApi()
   //     this.ss.saveHeroDB(this.villain);
-    
+
   // }
 
-getHeroFromApi(heroId:number):void{
-  this.ss.getOneHeroFromApi(heroId).subscribe(
-    (data)=>{
-      this.superheroes=[data];
-      //console.log(this.superheroes);
-    },()=>{
-      this.superheroes = null;
-      console.log("error retrieving superhero from API")
-    }
-  )
+  getHeroFromApi(heroId: number): void {
+    this.ss.getOneHeroFromApi(heroId).subscribe(
+      (data) => {
+        this.superheroes = [data];
+        //console.log(this.superheroes);
+      }, () => {
+        this.superheroes = null;
+        console.log("error retrieving superhero from API")
+      }
+    )
   }
 
-  getHeroList():Array<Superhero>{
+  getHeroList(): Array<Superhero> {
     return this.superheroes = this.ss.getFiveHeros()
-      }
-    
+  }
+
 
   // saveHero():void{
   //   this.ss.saveHero(hero)
   // }
 
-getRandomHerofromApi():void{
-  this.ss.getRandomHeroFromApi().subscribe(
-  (data)=>{
-    this.villain=data;
-    if(this.villain.powerStats.intelligence == null||this.villain.powerStats.strength == null||
-      this.villain.powerStats.speed == null||this.villain.powerStats.durability == null||
-      this.villain.powerStats.power == null||this.villain.powerStats.combat == null){
-        this.ss.getRandomHeroFromApi();
-      } return this.villain;
-    //this.ss.saveHeroDB(this.villain);
-  },
-  //error retrieving data
-  () =>{
-    this.opponent = null;
-    console.log("error retrieving superhero from API");
-  });
-}
+  getRandomHerofromApi(): void {
+    this.ss.getRandomHeroFromApi().subscribe(
+      (data) => {
+        this.villain = data;
+        if (this.villain.powerstats.intelligence == null || this.villain.powerstats.strength == null ||
+          this.villain.powerstats.speed == null || this.villain.powerstats.durability == null ||
+          this.villain.powerstats.power == null || this.villain.powerstats.combat == null) {
+          this.ss.getRandomHeroFromApi();
+        } else {
+          return this.villain;
+        }
+      },
+      //error retrieving data
+      () => {
+        this.opponent = null;
+        console.log("error retrieving superhero from API");
+      })
+  }
+
 }
