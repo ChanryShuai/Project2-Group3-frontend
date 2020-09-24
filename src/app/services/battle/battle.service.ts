@@ -28,15 +28,19 @@ export class BattleService {
     this.userService.getAllUsers().subscribe(
       (data) => {
         let allUsers: Array<User> = data;
-        let userRecords: Array<Array<any>>;
-        for (let user of allUsers) {
-          var userRecord: Array<any> = [0, "null", "null", 0];
+        //console.log(allUsers);
+        let userRecords: Array<Array<any>> =[[]];
+       // let userRecord: Array<any> = [0, "null", "null", 0];
+        for (let user of allUsers) {    
+          //console.log(user);
+          let userRecord: Array<any> = [0, "null", "null", 0];
           userRecord[0] = user.userId;
           userRecord[1] = user.first;
           userRecord[2] = user.last;
           userRecord[3] = user.userRecord;
-          
-        } userRecords.push(userRecord);
+        //console.log(userRecord);
+        userRecords.push([userRecord])
+        } 
         return userRecords;
       }
     ); () => { console.log("Error loading all user records...");

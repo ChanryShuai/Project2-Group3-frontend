@@ -4,24 +4,30 @@
             <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
         </li>
 
-        <li class="navbar-item" ngbDropdown #myDrop="ngbDropdown">
+        <!-- <li class="navbar-item" ngbDropdown #myDrop="ngbDropdown">
             <button class="nav-link dropdown-toggle" ngbDropdownAnchor (focus)="myDrop.open()">Login</button>
             <div class="DropdownMenu" ngbDropdownMenu aria-labelledby="dropdownManual" style="float:left;">
                 <button ngbDropdownItem routerLinkActive="active" routerLink="login">Login</button>
                 <button ngbDropdownItem routerLinkActive="active" routerLink="register">Register</button>
             </div>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="register">Register</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " routerLinkActive="active " routerLink="superhero ">Superhero Database</a>
+            <a class="nav-link " routerLinkActive="active " routerLink="superhero">Superhero Database</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " routerLinkActive="active " routerLink="game ">Play</a>
+            <a class="nav-link " routerLinkActive="active " routerLink="game">Play</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " routerLinkActive="active " routerLink="battle ">Battle Records</a>
+            <a class="nav-link " routerLinkActive="active " routerLink="battle">Battle Records</a>
         </li>
         <li class="nav-item ">
-            <a class="nav-link " routerLinkActive="active " routerLink="logout ">Logout</a>
+            <a class="nav-link " routerLinkActive="active " routerLink="logout">Logout</a>
         </li>
     </ul>
 </nav>

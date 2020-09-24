@@ -17,10 +17,16 @@ export class SuperheroService {
     return this.http.get("https://www.superheroapi.com/api.php/2746669182324854/" +id+"/") as Observable<Superhero>
   }
 
+  getHeroNameFromApi(name:string):Observable<Superhero>{
+    return this.http.get("https://www.superheroapi.com/api.php/2746669182324854/" +name+"/") as Observable<Superhero>
+  }
+
+
  //getting random opponent
   getRandomHeroFromApi(): Observable<Superhero> {
     let opponentId = Math.floor(Math.random() * 731)+1;
     return this.http.get("https://www.superheroapi.com/api.php/2746669182324854/" +opponentId+"/") as Observable<Superhero>
+    
   }
   
   //building an array of 5 superheroes
@@ -37,7 +43,8 @@ export class SuperheroService {
           this.hero5.push(this.sup);
         } 
       );
-      }return this.hero5;
+      }
+      return this.hero5;
   }
 
     // //saving one hero to DB

@@ -15,7 +15,7 @@ export class BattleComponent implements OnInit {
 
   username:string
   //userBattles:Array<Battle>
-  userRecords:Array<any>
+  userRecords:Array<Array<User>>
 
   ngOnInit(): void {
   }
@@ -32,12 +32,12 @@ export class BattleComponent implements OnInit {
   getOneUserRecord(username:string){
     this.us.getUserByUsername(this.username).subscribe(
       (data)=>{
-        this.userRecords=[data];
+        this.userRecords=[[data]];
       }
       )
     }
 
-  getUserRecords(){
+  getUserRecords():Array<Array<User>>{
     this.userRecords=this.bs.getAllUserRecords() 
     return this.userRecords;
   }

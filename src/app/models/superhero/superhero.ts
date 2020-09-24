@@ -16,7 +16,7 @@ export class Superhero {
     // power: number;
     // combat: number;
     // average: number;
-    powerStats:Powerstats;
+    powerStats: Powerstats;
 
     constructor(id: number, image: object, name: string, alignment: string, occupation: string, affiliation: string, powerStats:Powerstats) {
         this.id = id;

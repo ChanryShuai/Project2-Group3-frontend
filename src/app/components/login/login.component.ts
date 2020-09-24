@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
                   if (user != null) {
                     this.loginService.isLoggedIn = true;
                     this.loginService.notLoggedIn = false;
+                    this.router.navigate(["/game"]);
                   }
                 }   
             );}
