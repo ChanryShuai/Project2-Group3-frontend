@@ -3,44 +3,50 @@
         <div class="col-6">
             <br>
             <br>
-        <label style="font-family: Impact; font-size:x-large; color: rgb(228, 124, 28)">We have 731 superheros -- enter a number to check it out:</label>
-        <input class="col" type="number" [(ngModel)]="heroId">
-        <br>
-        <br>
-        <button  class="btn btn-primary" (click)="getHeroFromApi(heroId)">Find a Superhero</button>
+            <label style="font-family: Impact; font-size:x-large; color: rgb(228, 124, 28)">We have 731 superheros -- enter a number to check it out:</label>
+            <input class="col" type="number" [(ngModel)]="heroId">
+            <br>
+            <br>
+            <button class="btn btn-primary" (click)="getHeroFromApi(heroId)">Find a Superhero</button>
+        </div>
     </div>
-</div>
     <div class="row-4">
         <div class="col-4">
             <br>
             <br>
-        <p style="font-family: Impact; font-size: x-large; color: rgb(228, 124, 28)" >More Superheros?</p>
-        <button class="btn btn-primary" (click)="getHeroList()">Superhero Database</button>
+            <p style="font-family: Impact; font-size: x-large; color: rgb(228, 124, 28)">More Superheros?</p>
+            <button class="btn btn-primary" (click)="getHeroList()">Superhero Database</button>
+        </div>
     </div>
-</div>
-    <div style="padding: 13px;">
-        <mat-spinner *ngIf="superheroes.length === 0"></mat-spinner>
-
+    <div class="row" style="padding: 13px; margin:13px">
         <mat-card *ngFor="let superhero of superheroes" style="margin-top:10px;">
             <mat-card-header>
                 <mat-card-title>{{superhero.name}}</mat-card-title>
                 <mat-card-subtitle>{{superhero.id}}</mat-card-subtitle>
+                <img mat-card-avatar src="{{superhero.image.url}}" />
             </mat-card-header>
             <mat-card-content>
-                <img *ngIf="superhero.image.url" style="height: 5%; width: 10%;" src="{{superhero.image.url}}" />
-                <!-- <p *ngIf="superhero.biography.fullName">
-                    {{superhero.biography.fullName}}
-                </p> -->
+                <img style="height: 50%; width: 50%;" src="{{superhero.image.url}}" alt="...Sorry...This superhero doesn't have an image yet" />
                 <p>Alignment:
                     <td style="text-transform: uppercase;">
                         {{superhero.biography.alignment}}
                     </td>
                 </p>
-                <p *ngIf="superhero.work.occupation">Occupation:
-                    <td *ngIf="superhero.work.occupation">
+                <p> ================= </p>
+                <p *ngIf="superhero.work.occupation!=='-'">Occupation:
+                    <td>
                         {{superhero.work.occupation}}
                     </td>
                 </p>
+                <div>
+                    <p>Gender: {{superhero.appearance.gender}}
+                    </p>
+                    <p *ngIf="superhero.appearance.race!=='-'"> Race: {{superhero.appearance.race}}
+                    </p>
+                    <p *ngIf="superhero.appearance.height[0]!=='-'">Height: {{superhero.appearance.height[0]}}
+                    </p>
+                    <p *ngIf="superhero.appearance.weight[0]!=='-'">Weight: {{superhero.appearance.weight[0]}}
+                </div>
                 <div>
                     <p>Intelligence: {{superhero.powerstats.intelligence}}
                     </p>
@@ -56,9 +62,6 @@
                     </p>
                 </div>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>CHOOSE THIS AVATAR</button>
-            </mat-card-actions>
         </mat-card>
     </div>
 </div>
