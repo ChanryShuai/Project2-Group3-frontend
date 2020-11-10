@@ -1,0 +1,23 @@
+button {
+    border-radius: 20px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+h2 {
+    margin-top: 15vh;
+    font-family: Impact;
+    font-size: 35px;
+    word-spacing: 3px;
+    text-decoration: underline;
+    /* text-shadow: 3px 1px rgb(228, 124, 28); */
+}
+
+label {
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 22px;
+}

@@ -49,6 +49,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BattleComponent,
     RegisterComponent,
     LogoutComponent,
-    GameComponent 
+    GameComponent,
+    UserComponent 
   ],
   imports: [
     BrowserModule,

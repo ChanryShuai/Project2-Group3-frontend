@@ -1,5 +1,22 @@
-<div class="grid-container">
-    <h2>Logging out...</h2>
-    <p>Thank you for playing!</p>
-    <p>Hope you had a great showdown!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="align-middle">
+                <div *ngIf="check==false">
+                    <h1>...Sorry, you must be logged in to log out...</h1>
+                </div>
+                <div class="text-center" *ngIf="check == true">
+                    <h1>Are you sure you would like to log out?</h1>
+                    <button class="btn btn-primary glyphicon" (click)="game()">ANOTHER GAME!</button>
+                    <br>
+                    <button class="btn btn-primary glyphicon" (click)="logout(this.check)">Log Out</button>
+                    <!-- <div *ngIf="check == false">
+        <h1>Logging out...</h1>
+        <p>Thank you for playing!</p>
+        <p>Hope you had a great showdown!</p> 
+    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

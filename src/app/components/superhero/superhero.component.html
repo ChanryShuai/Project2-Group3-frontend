@@ -19,23 +19,25 @@
         </div>
     </div>
     <div class="row" style="padding: 13px; margin:13px">
-        <mat-card *ngFor="let superhero of superheroes" style="margin-top:10px;">
+        <mat-card *ngFor="let superhero of superheroes" style="margin:10px;">
             <mat-card-header>
                 <mat-card-title>{{superhero.name}}</mat-card-title>
                 <mat-card-subtitle>{{superhero.id}}</mat-card-subtitle>
                 <img mat-card-avatar src="{{superhero.image.url}}" />
             </mat-card-header>
+            <br>
             <mat-card-content>
+
                 <img style="height: 50%; width: 50%;" src="{{superhero.image.url}}" alt="...Sorry...This superhero doesn't have an image yet" />
                 <p>Alignment:
                     <td style="text-transform: uppercase;">
                         {{superhero.biography.alignment}}
                     </td>
                 </p>
-                <p> ================= </p>
-                <p *ngIf="superhero.work.occupation!=='-'">Occupation:
+                <p> ======================== </p>
+                <p *ngIf="superhero.work.occupation!=='-'">
                     <td>
-                        {{superhero.work.occupation}}
+                        Occupation: {{superhero.work.occupation}}
                     </td>
                 </p>
                 <div>
@@ -47,6 +49,7 @@
                     </p>
                     <p *ngIf="superhero.appearance.weight[0]!=='-'">Weight: {{superhero.appearance.weight[0]}}
                 </div>
+                <p> ======================== </p>
                 <div>
                     <p>Intelligence: {{superhero.powerstats.intelligence}}
                     </p>

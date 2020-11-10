@@ -1,0 +1,51 @@
+label {
+    text-align: center;
+    font-family: Impact;
+    font-size: 25px;
+    word-spacing: 3px;
+    letter-spacing: 2px;
+}
+
+input {
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: transparent;
+    font-size: 20px;
+    color: black;
+    line-height: 1.2;
+    height: 100px;
+    width: 50vw;
+    */
+    padding: 30px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    text-align: center;
+}
+
+button {
+    /* padding: 20px 30px;
+    margin-top: 10px; */
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    /* width: 20vw; */
+    font: 25px "Trebuchet MS", Helvetica, sans-serif;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+h2 {
+    margin-top: 15vh;
+    font-family: Impact;
+    font-size: 40px;
+    word-spacing: 3px;
+    text-decoration: underline;
+    /* text-shadow: 3px 1px rgb(228, 124, 28); */
+}

@@ -1,7 +1,25 @@
 <body>
+    <div style="padding: 13px;" *ngIf="user">
+        <h2>User Info:</h2>
+        <mat-card style="margin-top:10px;" (click)="getUserBattles(user.username)">
+            <mat-card-header>
+                <mat-card-title style="text-transform: capitalize;">{{user.first}} {{user.last}}</mat-card-title>
+                <mat-card-subtitle>User ID: {{user.userId}}</mat-card-subtitle>
+                <img mat-card-avatar src="{{avurl + user.userId}}" />
+            </mat-card-header>
+            <mat-card-content>
+                <p>Username: {{user.username}}
+                </p>
+                <!-- <p>Record: {{user.userRecord}} %
+                </p>
+                <p>Number of Battles Played: {{user.userWins+user.userLosses}}</p> -->
+            </mat-card-content>
+        </mat-card>
+    </div>
+
     <div class="container">
         <div class="row">
-            <h2>Register as a new user: </h2>
+            <h2>Update User Info: </h2>
             <div class="row" id="formdiv" style="align-content: center;">
                 <div class="col-3-sm" style="padding:20px;">
                     <label class="label" for="username">Username:</label>
@@ -19,11 +37,11 @@
                     <label class="label" for="last">Last Name:</label>
                     <input type="text" class="form-control" [(ngModel)]="last" required>
                 </div>
+            </div>
 
-            </div>
-            <div class="row justify-content-center" id="formbtn" style="align-content: center;">
-                <button class="btn btn-success" id="registerbtn" (click)="register()"> Register </button>
-            </div>
+        </div>
+        <div class="row" id="formbtn" style="align-content: center;">
+            <button class="btn btn-success" id="registerbtn" (click)="update()"> Update </button>
         </div>
     </div>
 </body>

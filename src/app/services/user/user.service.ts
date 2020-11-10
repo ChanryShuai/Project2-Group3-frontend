@@ -15,12 +15,13 @@ export class UserService {
     return this.http.post<User>(('http://localhost:8080/project2/user/register'), body);
   }
 
+  
   getUserById(userId:number): Observable<User>{
-    return this.http.get<User>('http://localhost:8080/project2/user'+userId);
+    return this.http.get<User>('http://localhost:8080/project2/user/'+userId);
   }
 
   getUserByUsername(username:string): Observable<User>{
-    return this.http.get<User>('http://localhost:8080/project2/user'+username);
+    return this.http.get<User>('http://localhost:8080/project2/user/'+username);
   }
   
   updateUser(u:User):Observable<User>{

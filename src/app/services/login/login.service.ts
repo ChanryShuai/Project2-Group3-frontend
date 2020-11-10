@@ -34,6 +34,6 @@ export class LoginService {
 
   logout() {
     this.isLoggedIn = false;
-    this.reload('home');
+    this.loggedInUser = null;
   }
 }

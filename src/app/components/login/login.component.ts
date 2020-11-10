@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'; 
-import { LoginService } from '../../services/login/login.service'; 
-import { Router } from '@angular/router';  
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +9,45 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-    login_username: string;
-    login_password: string;
+  login_username: string;
+  login_password: string;
 
-    constructor(private loginService:LoginService, 
-        private router:Router
-       ){}
+  constructor(private loginService: LoginService,
+    private router: Router
+  ) { }
 
-    ngOnInit() {
+  ngOnInit() {
+  }
+
+  validate() {
+    if (this.login_username == null || this.login_password == null) {
+      alert('please enter your username and password.');
+    } else {
+      console.log('validating user: ' + this.login_username);
+      this.loginService.validate(this.login_username, this.login_password).subscribe(
+        (user) => {
+          this.loginService.loggedInUser = user;
+          console.log(user);
+          console.log(this.loginService.loggedInUser)
+          if (user != null) {
+            this.loginService.isLoggedIn = true;
+            this.loginService.notLoggedIn = false;
+            this.router.navigate(["/game"]);
+          } else {
+            alert("Invalid credentials. Please try again!")
+          }
+        }
+      );
     }
+  }
 
-   
-    // validate():void {
+  register() {
+    this.router.navigate(['/register']);
+    console.log("Registering new user");
+  }
+}
+
+// validate():void {
     //     console.log('validating user: ' + this.login_username);
     //     this.loginService.validate(this.login_username,this.login_password).subscribe(
     //         resp=>{ 
@@ -49,26 +76,3 @@ export class LoginComponent implements OnInit {
     //         }
     //     );
     // }
-
-        validate(){
-            if (this.login_username == null || this.login_password == null) {
-                alert('please enter your username and password.');
-         }else{
-            console.log('validating user: ' + this.login_username);
-            this.loginService.validate(this.login_username, this.login_password).subscribe(
-                user => {
-                  this.loginService.loggedInUser = user;
-                  if (user != null) {
-                    this.loginService.isLoggedIn = true;
-                    this.loginService.notLoggedIn = false;
-                    this.router.navigate(["/game"]);
-                  }
-                }   
-            );}
-        }
-
-   register(){
-        this.router.navigate(['/register']);
-        console.log("Registering new user");
-    }
-}

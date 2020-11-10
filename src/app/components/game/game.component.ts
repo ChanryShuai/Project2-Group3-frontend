@@ -6,6 +6,8 @@ import { Superhero } from 'src/app/models/superhero/superhero';
 import { Powerstats } from 'src/app/models//powerstats/powerstats';
 import { BattleService } from 'src/app/services/battle/battle.service';
 import { SuperheroService } from 'src/app/services/superhero/superhero.service';
+import { LoginComponent } from '../login/login.component';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-game',
@@ -15,76 +17,92 @@ import { SuperheroService } from 'src/app/services/superhero/superhero.service';
 export class GameComponent implements OnInit {
 
   superheroes: Superhero[];
- // avatarId:number = parseInt(document.getElementById("avatarId").nodeValue);
+  // avatarId:number = parseInt(document.getElementById("avatarId").nodeValue);
   avatar: Superhero;
   //let avatarname = document.getElementById("avatarname");
   villain: Superhero;
-  outcome: string; 
-  userId:number;
-  avarPower:Powerstats;
+  outcome: string;
+  userId: number;
+  avarPower: Powerstats;
 
-  constructor(private ss: SuperheroService, private bs:BattleService, private router:Router) { }
+  constructor(private ss: SuperheroService, private bs: BattleService, private router: Router, private ls: LoginService) { }
 
   ngOnInit(): void {
   }
 
   gameInit() {
-    return this.superheroes = this.ss.getFiveHeros();
+    if (this.ls.isLoggedIn == true) {
+      //console.log(this.ls.loggedInUser)
+      return this.superheroes = this.ss.getFiveHeros();
+    } else {
+      alert("Please login or register to play our game!")
+      this.router.navigate(['/login']);
+    }
   }
 
-  selectHero(id:number): Superhero[] {
+  selectHero(id: number): Superhero[] {
     // let avatarname = document.getElementById("avatarname").toString();
-     console.log(id);
+    console.log(id);
     this.ss.getOneHeroFromApi(id).subscribe(
       (data) => {
         this.avatar = data
-       // console.log(this.avatar)
+        // console.log(this.avatar)
         this.superheroes = [this.avatar];
         //console.log(this.superheroes);
       })
     this.ss.getRandomHeroFromApi().subscribe(
-      (data)=>{
+      (data) => {
         this.villain = data;
       }
     )
+    window.scroll(0,0);
     return [this.avatar];
-   
+
   }
 
-  average(hero:Superhero):number{
-  let p:Powerstats = hero.powerstats;
-  console.log(p);
-  let average:number = (p.intelligence+p.strength+p.speed+p.durability+p.power+p.combat)/6;
-  console.log(average);
-  return average;
+  average(hero: Superhero): number {
+    let p: Powerstats = hero.powerstats;
+    console.log(p);
+    let average: number = (p.intelligence + p.strength + p.speed + p.durability + p.power + p.combat) / 6;
+    console.log(average);
+    return average;
   }
 
-  fight(superhero:Superhero[], villain:Superhero): string {
-    //this.avarPower = this.avatar.powerStats;
-   
+  fight(superhero: Superhero[], villain: Superhero): string {
     let sup = superhero[0];
     let supA = this.average(sup);
     let villainA = this.average(villain);
-    // console.log(sup);
-    // console.log(supA);
-    // console.log(villainA);
-    //console.log(villain.powerStats.intelligence);
     if (supA >= villainA) {
       this.outcome = "win";
-      // alert("YOU HAVE WON!")
-      // this.router.navigate(['/battle']);
+      alert("YOU HAVE WON!")
+      let id:number = this.ls.loggedInUser.userId;
+      console.log(id);
+      let b = new BattleDTO(this.outcome, this.avatar.name, this.villain.name, id);
+      b.userId = id
+      this.bs.addBattle(b).subscribe(
+        (response:Battle)=>{
+          let b1 = response;
+        }
+      );
     } else {
       this.outcome = "loss";
-      // alert("You lost!")
+      alert("You lost!")
       // this.router.navigate(['/battle']);
-    }console.log(this.outcome); 
+      let id:number = this.ls.loggedInUser.userId;
+      console.log(id);
+      let b = new BattleDTO(this.outcome, this.avatar.name, this.villain.name, id);
+      b.userId = id
+      this.bs.addBattle(b).subscribe(
+        (response:Battle)=>{
+          let b1 = response;
+        }
+      );
+    } console.log(this.outcome);
+    this.gameInit();
+    window.scroll(0,0);
     return this.outcome;
   }
 
-  buildBattle():void{
-    let battleDTO = new BattleDTO(this.outcome, this.avatar.name, this.villain.name, this.userId);
-    this.bs.addBattle(battleDTO);
-  }
 
   // this.ss.getOneHeroFromApi(this.avatarId).subscribe(
 

@@ -1,99 +1,107 @@
-<h2> Let's Play</h2>
-<div class="row" id="formdiv">
-    <div class="col-4-sm">
-        <button class="btn btn-success" id="registerbtn" (click)="gameInit()"> Start </button>
-        <div main="container">
-            <div class="row">
-                <div style="padding: 13px;">
-                    <h2 *ngIf="superheroes.length>0">Pick Your Avatar:</h2>
-                    <mat-card *ngFor="let superhero of superheroes" style="margin-top:10px;" (click)="selectHero(superhero.id)">
-                        <mat-card-header>
-                            <mat-card-title id="avatarname">{{superhero.name}}</mat-card-title>
-                            <mat-card-subtitle>{{superhero.id}}</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <img *ngIf="superhero.image.url" style="height: 5%; width: 10%;" src="{{superhero.image.url}}" />
-                            <!-- <p *ngIf="superhero.biography.fullName">
-                            {{superhero.biography.fullName}}
-                        </p> -->
-                            <p>Alignment:
-                                <td style="text-transform: uppercase;">
-                                    {{superhero.biography.alignment}}
-                                </td>
-                            </p>
-                            <p *ngIf="superhero.work.occupation">Occupation:
-                                <td *ngIf="superhero.work.occupation">
-                                    {{superhero.work.occupation}}
-                                </td>
-                            </p>
-                            <div>
-                                <p>Intelligence: {{superhero.powerstats.intelligence}}
-                                </p>
-                                <p>Strength: {{superhero.powerstats.strength}}
-                                </p>
-                                <p>Speed: {{superhero.powerstats.speed}}
-                                </p>
-                                <p>Durability: {{superhero.powerstats.durability}}
-                                </p>
-                                <p>Power: {{superhero.powerstats.power}}
-                                </p>
-                                <p>Combat: {{superhero.powerstats.combat}}
-                                </p>
-                            </div>
-                        </mat-card-content>
-                        <!-- <mat-card-actions>
+<div main="container">
+    <div class="row-4">
+        <div class="col-6">
+            <br>
+            <!-- <h2> Let's Play: </h2> -->
+            <div class="row" id="formdiv">
+                <div class="col-md-12">
+                    <div class="align-middle">
+                        <button class="btn btn-success" id="registerbtn" (click)="gameInit()"> LET'S PLAY </button>
+                    </div>
+                    <div main="container">
+                        <div class="span">
+                            <div style="padding: 13px;margin:13px">
+                                <h2 *ngIf="superheroes.length>0">Pick Your Avatar:</h2>
+                                <mat-card *ngFor="let superhero of superheroes" style="margin-top:10px;" (click)="selectHero(superhero.id)">
+                                    <mat-card-header>
+                                        <mat-card-title id="avatarname">{{superhero.name}}</mat-card-title>
+                                        <mat-card-subtitle>{{superhero.id}}</mat-card-subtitle>
+                                        <img mat-card-avatar src="{{superhero.image.url}}" />
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <img *ngIf="superhero.image.url" style="height: 50%; width: 50%;" src="{{superhero.image.url}}" />
+
+                                        <p>Alignment:
+                                            <td style="text-transform: uppercase;">
+                                                {{superhero.biography.alignment}}
+                                            </td>
+                                        </p>
+                                        <p *ngIf="superhero.work.occupation">Occupation:
+                                            <td *ngIf="superhero.work.occupation">
+                                                {{superhero.work.occupation}}
+                                            </td>
+                                        </p>
+                                        <div>
+                                            <p>Intelligence: {{superhero.powerstats.intelligence}}
+                                            </p>
+                                            <p>Strength: {{superhero.powerstats.strength}}
+                                            </p>
+                                            <p>Speed: {{superhero.powerstats.speed}}
+                                            </p>
+                                            <p>Durability: {{superhero.powerstats.durability}}
+                                            </p>
+                                            <p>Power: {{superhero.powerstats.power}}
+                                            </p>
+                                            <p>Combat: {{superhero.powerstats.combat}}
+                                            </p>
+                                        </div>
+                                    </mat-card-content>
+                                    <!-- <mat-card-actions>
                         <button mat-button (click)="selectHero(superhero.id)">CHOOSE THIS AVATAR</button>
                     </mat-card-actions> -->
-                    </mat-card>
-                </div>
-
-                <div style="padding: 13px;" *ngIf="villain">
-                    <h2>Opponent:</h2>
-                    <mat-card style="margin-top:10px;">
-                        <mat-card-header>
-                            <mat-card-title id="villainname">{{villain.name}}</mat-card-title>
-                            <mat-card-subtitle>{{villain.id}}</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <img *ngIf="villain.image.url" style="height: 5%; width: 10%;" src="{{villain.image.url}}" />
-                            <p>Alignment:
-                                <td style="text-transform: uppercase;">
-                                    {{villain.biography.alignment}}
-                                </td>
-                            </p>
-                            <p *ngIf="villain.work.occupation">Occupation:
-                                <td *ngIf="villain.work.occupation">
-                                    {{villain.work.occupation}}
-                                </td>
-                            </p>
-                            <div>
-                                <p>Intelligence: {{villain.powerstats.intelligence}}
-                                </p>
-                                <p>Strength: {{villain.powerstats.strength}}
-                                </p>
-                                <p>Speed: {{villain.powerstats.speed}}
-                                </p>
-                                <p>Durability: {{villain.powerstats.durability}}
-                                </p>
-                                <p>Power: {{villain.powerstats.power}}
-                                </p>
-                                <p>Combat: {{villain.powerstats.combat}}
-                                </p>
+                                </mat-card>
                             </div>
-                        </mat-card-content>
-                        <!-- <mat-card-actions>
+
+                            <div style="padding: 13px; margin:13px" *ngIf="villain">
+                                <div class="row"><button (click)="fight(superheroes, villain)">Fight</button></div>
+                                <h2>Opponent:</h2>
+                                <mat-card style="margin-top:10px;">
+
+                                    <mat-card-header>
+                                        <mat-card-title id="villainname">{{villain.name}}</mat-card-title>
+                                        <mat-card-subtitle>{{villain.id}}</mat-card-subtitle>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <img *ngIf="villain.image.url" style="height: 50%; width: 50%;" src="{{villain.image.url}}" />
+                                        <p>Alignment:
+                                            <td style="text-transform: uppercase;">
+                                                {{villain.biography.alignment}}
+                                            </td>
+                                        </p>
+                                        <p *ngIf="villain.work.occupation">Occupation:
+                                            <td *ngIf="villain.work.occupation">
+                                                {{villain.work.occupation}}
+                                            </td>
+                                        </p>
+                                        <div>
+                                            <p>Intelligence: {{villain.powerstats.intelligence}}
+                                            </p>
+                                            <p>Strength: {{villain.powerstats.strength}}
+                                            </p>
+                                            <p>Speed: {{villain.powerstats.speed}}
+                                            </p>
+                                            <p>Durability: {{villain.powerstats.durability}}
+                                            </p>
+                                            <p>Power: {{villain.powerstats.power}}
+                                            </p>
+                                            <p>Combat: {{villain.powerstats.combat}}
+                                            </p>
+                                        </div>
+                                    </mat-card-content>
+                                    <!-- <mat-card-actions>
                         <button mat-button (click)="selectHero(superhero.id)">CHOOSE THIS AVATAR</button>
                     </mat-card-actions> -->
-                    </mat-card>
-                    <div class="row"><button (click)="fight(superheroes, villain)">Fight</button></div>
-                </div>
+                                </mat-card>
 
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-
         </div>
-
     </div>
-
     <!-- <modal id="custom-modal-1">
         <div class="modal">
             <div class="modal-body">

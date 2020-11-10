@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BattleComponent } from './components/battle/battle.component';
 import { GameComponent } from './components/game/game.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   {
@@ -33,10 +34,10 @@ const routes: Routes = [
     path: 'superhero',
     component: SuperheroComponent
   },
-  // {
-  //   path:'navbar',
-  //   component:NavbarComponent
-  // },
+  {
+    path:'user',
+    component:UserComponent
+  },
   {
     path: 'battle',
     component: BattleComponent

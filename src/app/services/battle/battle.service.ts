@@ -19,34 +19,41 @@ export class BattleService {
   }
 
   //addBattle return void 
-  addBattle(battleDTO: BattleDTO): void {
-    this.http.post<Battle>(('http://localhost:8080/project2/battle'), battleDTO);
+  addBattle(battle: BattleDTO): Observable<Battle> {
+    let body: BattleDTO = battle;
+    return this.http.post<Battle>(('http://localhost:8080/project2/battle/add'), body);
   }
 
-  //get All user records		
-  getAllUserRecords():any {
-    this.userService.getAllUsers().subscribe(
-      (data) => {
-        let allUsers: Array<User> = data;
-        //console.log(allUsers);
-        let userRecords: Array<Array<any>> =[[]];
-       // let userRecord: Array<any> = [0, "null", "null", 0];
-        for (let user of allUsers) {    
-          //console.log(user);
-          let userRecord: Array<any> = [0, "null", "null", 0];
-          userRecord[0] = user.userId;
-          userRecord[1] = user.first;
-          userRecord[2] = user.last;
-          userRecord[3] = user.userRecord;
-        //console.log(userRecord);
-        userRecords.push([userRecord])
-        } 
-        return userRecords;
-      }
-    ); () => { console.log("Error loading all user records...");
-  return null; }
-    }
-  }   
+  //gets all a user's battles from DB using the username
+  getUserBattles(username: string): Observable<Battle[]> {
+    return this.http.get<Battle[]>('http://localhost:8080/project2/battle/' + username);
+  }
+}
+  //get All user records
+  // getAllUserRecords(): any {
+  //   this.userService.getAllUsers().subscribe(
+  //     (data) => {
+  //       let allUsers: Array<User> = data;
+  //       //console.log(allUsers);
+  //       let userRecords: Array<Array<any>> =[[]];
+  //      // let userRecord: Array<any> = [0, "null", "null", 0];
+  //       for (let user of allUsers) {    
+  //         //console.log(user);
+  //         let userRecord: Array<any> = [0, "null", "null", 0];
+  //         userRecord[0] = user.userId;
+  //         userRecord[1] = user.first;
+  //         userRecord[2] = user.last;
+  //         userRecord[3] = user.userRecord;
+  //       //console.log(userRecord);
+  //       userRecords.push([userRecord])
+  //       } 
+  //       console.log(userRecords)
+  //       return userRecords;
+  //     }
+  //   ); () => { console.log("Error loading all user records...");
+  // return null; }
+  //   }
+  // }   
 
 // //get One user record		
 // getOneUserRecord(userId:number){		
@@ -57,9 +64,5 @@ export class BattleService {
 //     userRecord[2] = u.userRecord;		
 
 //  }
-// }
 
-  // //gets all a user's battles from DB using the username
-  // getUserBattles(username:string): Observable<Battle[]>{
-  //   return this.http.get<Battle[]>('http://localhost:8080/project2/battle/'+username);
-  // }
+
